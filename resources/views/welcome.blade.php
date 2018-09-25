@@ -8,14 +8,14 @@
         <title>Craaser</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Muli:200,400,800|Poppins|Lato|Playfair+Display" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                background-color: #3c3c3c;
+                color: #fff;
+                font-family: 'Lato', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -50,7 +50,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/app/home') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>

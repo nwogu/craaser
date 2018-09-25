@@ -34,16 +34,23 @@ class ReviewController extends Controller
         && $request->filled('email')
         && $request->filled('review')
         && $request->filled('rating')) {
-            $review = new Review();
-            $review->name = $request->name;
-            $review->email = $request->email;
-            $review->review = $request->review;
-            $review->rating = $request->rating;
-            $company->reviews()->save($review);
+            if ($request->rating == 'null') {
+                $request->session()->flash('message', 'Hey, You did not pick a rating. Please Rate out of 5');
+            } else {
+                $review = new Review();
+                $review->name = $request->name;
+                $review->email = $request->email;
+                $review->review = $request->review;
+                $review->rating = $request->rating;
+                if ($request->rating == 5) {
+                    $review->published = 1;
+                }
+                $company->reviews()->save($review);
 
-            $request->session()->flash('message', 'Your Review Was Received Gracefully');
+                $request->session()->flash('message', 'Your Review Was Received Gracefully');
 
-            return redirect('/'.$slug.'/reviews');
+                return redirect('/'.$slug);
+            }
         } elseif ($request->has('name') && !$request->filled('name')
         && $request->has('email') && !$request->filled('email')
         && $request->has('review') && !$request->filled('review')

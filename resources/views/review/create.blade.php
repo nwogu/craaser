@@ -52,6 +52,7 @@
 							<div class="form-group">
 						        <div class="name">Rate {{$company->name}} Out of 5</div>
 						        <select  name ='rating' class="_margin-20 form-control" required >
+								<option value='null' selected> Pick a Rating</option>
 								<option value='5'> 5 Stars | Excellent </option>
 								<option value='4'> 4 Stars | Good </option>
 								<option value='3'> 3 Stars | Fair </option>

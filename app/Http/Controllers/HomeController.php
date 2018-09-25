@@ -59,7 +59,7 @@ class HomeController extends Controller
         $del = '<a href="/home/delete/'.$id.'">Yes</a>';
         $request->session()->flash('message', 'Are you sure you want to delete? '.$del.' <a href="/home">No</a>');
 
-        return redirect('/home');
+        return redirect('/app/home');
     }
 
     public function delete(Request $request, $id)
@@ -68,7 +68,7 @@ class HomeController extends Controller
 
         $request->session()->flash('message', 'Review Deleted');
 
-        return redirect('/home');
+        return redirect('/app/home');
     }
 
     public function publish(Request $request, $id)
@@ -86,6 +86,6 @@ class HomeController extends Controller
 
         $request->session()->flash('message', $message);
 
-        return redirect('/home');
+        return redirect('/app/home');
     }
 }

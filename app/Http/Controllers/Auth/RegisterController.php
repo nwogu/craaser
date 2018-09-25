@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/app/home';
 
     /**
      * Create a new controller instance.
@@ -67,7 +67,7 @@ class RegisterController extends Controller
         $company_name = ucwords($data['name']);
         $company_slug = strtolower($data['company_slug']);
         $company_slug = trim($company_slug);
-        $company_name = str_replace(' ', '', $company_slug);
+        $company_slug = str_replace(' ', '', $company_slug);
 
         return User::create([
             'name' => $company_name,

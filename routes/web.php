@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{slug}/reviews', 'ReviewController@show');
+Route::get('/{slug}', 'ReviewController@show');
 Route::any('/{slug}/add', 'ReviewController@create');
 Route::any('/home/delete/{id}', 'HomeController@delete');
 Route::any('/home/confirmdelete/{id}', 'HomeController@confirmDelete');
 Route::any('/home/publish/{id}', 'HomeController@publish');
-Auth::routes();
+Route::group(['prefix' => 'app'], function () {
+    Auth::routes();
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/app/home', 'HomeController@index')->name('home');
