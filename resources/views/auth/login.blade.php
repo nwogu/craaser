@@ -57,10 +57,18 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                
                             </div>
+                        </div>
+                        <div class='row justify-content-center' style='margin-top:10px'>
+                            <h3>Login Details</h3>
+                        </div>
+                        <div class='row justify-content-center'>
+                            <p>Email: demo@demo.com</p>
+                        </div>
+                        <div class='row justify-content-center'>
+                            <p>Password: craaser</p>
+                        </div>
                         </div>
                     </form>
                 </div>

@@ -13,8 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #3c3c3c;
-                color: #fff;
+                background-color: #fff;
+                color: #3c3c3c;
                 font-family: 'Lato', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -50,7 +50,7 @@
             }
 
             .links > a {
-                color: #fff;
+                color: #3c3c3c;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -66,16 +66,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/app/home') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+            
 
             <div class="content">
                 <div class="title m-b-md">
@@ -83,13 +74,12 @@
                 </div>
 <br>
                 <div class="m-b-md">
-                    <h3>Simple Customer Review Manager</h3>
+                    <h3>Simple Free Customer Review Manager</h3>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Try Demo</a>
-                    <a href="https://laracasts.com">Get Your Sub Domain</a>
-                    <a href="https://laravel-news.com">Contact Us</a>
+                    <a href="{{ route('login') }}">Try Demo</a>
+                   
                 </div>
             </div>
         </div>

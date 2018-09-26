@@ -160,6 +160,10 @@
   {!!session()->get('message')!!}
 </div>
 @endif
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  If you want to use this on your web app or ecommerce store.
+Send an email to nwogugabriel@gmail.com, and I'd set you up. Accepting Feedback too.
+</div>
 
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -298,21 +302,21 @@
                                             
                                             <h5 class="text-sm-center mt-2 mb-1">Your Review Page</h5>
                                             <div class="location text-sm-center">
-                                                <a href='http://craaser.com/{{Auth::user()->company_slug}}'>http://craaser.com/{{Auth::user()->company_slug}}</a></div>
+                                                <a href='http://craaser.com/{{Auth::user()->company_slug}}'>http://throle.org/{{Auth::user()->company_slug}}</a></div>
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
-                                            <a href="http://www.facebook.com/sharer.php?u=http://craaser.com/{{Auth::user()->company_slug}}">
+                                            <a href="http://www.facebook.com/sharer.php?u=http://throle.org/{{Auth::user()->company_slug}}">
                                                 <i class="">facebook</i>
                                             </a> | 
-                                            <a href="http://twitter.com/share?url=http://craaser.com/{{Auth::user()->company_slug}}">
+                                            <a href="http://twitter.com/share?url=http://throle.org/{{Auth::user()->company_slug}}">
                                                 <i class="">twitter</i>
                                             </a>
                                            
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <strong class="card-title mb-3">Share With Your Customers</strong>
+                                        <strong class="card-title mb-3">Add your Review Link to Your Web Menu.</strong>
                                     </div>
                                 </div>
                             </div>
