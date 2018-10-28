@@ -302,14 +302,14 @@ Send an email to nwogugabriel@gmail.com, and I'd set you up. Accepting Feedback 
                                             
                                             <h5 class="text-sm-center mt-2 mb-1">Your Review Page</h5>
                                             <div class="location text-sm-center">
-                                                <a href='http://craaser.com/{{Auth::user()->company_slug}}'>http://throle.org/{{Auth::user()->company_slug}}</a></div>
+                                                <a href='http://craaser.fallshot.com/{{Auth::user()->company_slug}}'>http://throle.org/{{Auth::user()->company_slug}}</a></div>
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
-                                            <a href="http://www.facebook.com/sharer.php?u=http://throle.org/{{Auth::user()->company_slug}}">
+                                            <a href="http://www.facebook.com/sharer.php?u=http://craaser.fallshot.com/{{Auth::user()->company_slug}}">
                                                 <i class="">facebook</i>
                                             </a> | 
-                                            <a href="http://twitter.com/share?url=http://throle.org/{{Auth::user()->company_slug}}">
+                                            <a href="http://twitter.com/share?url=http://craaser.fallshot.com/{{Auth::user()->company_slug}}">
                                                 <i class="">twitter</i>
                                             </a>
                                            
