@@ -27,11 +27,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * Get the reviews for the user.
+     /**
+     * Get the company of the user.
      */
-    public function reviews()
+    public function company()
     {
-        return $this->hasMany('App\Review')->orderBy('created_at', 'desc');
+        return $this->belongsTo('App\Company');
+    }
+
+     /**
+     * Get the role of the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
     }
 }

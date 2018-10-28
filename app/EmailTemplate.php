@@ -4,21 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class EmailTemplate extends Model
 {
+    //
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'review', 'rating',
+        'name', 'body', 'subject'
     ];
 
     /**
-     * Get the company that owns the review.
+     * Get the company that owns the email template.
      */
-    public function user()
+    public function company()
     {
         return $this->belongsTo('App\Company');
     }

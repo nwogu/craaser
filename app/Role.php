@@ -4,22 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Role extends Model
 {
-    /**
+    //
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'review', 'rating',
+        'name', 'description'
     ];
 
     /**
-     * Get the company that owns the review.
+     * Get the users with this role.
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\Company');
+        return $this->hasMany('App\User');
     }
 }
