@@ -18,7 +18,7 @@ class CreateEmailTemplatesTable extends Migration
             $table->integer('company_id')->unsigned();
             $table->string('name');
             $table->string('body');
-            $table->subject('subject');
+            $table->string('subject');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');

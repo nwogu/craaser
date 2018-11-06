@@ -24,7 +24,7 @@
                 <h1 class="_margin-50 _half-width _middle">{{$company->name}}</h1>
                 <p class="_margin-20 _half-width _middle">Reviews from our amazing customers</p>
 
-                                <a href="/{{$company->company_slug}}/add" class="btn btn-large btn-success blue _margin-50"><b>Add Your Review</b></a>
+                                <a href="{{route('add-company-review', ['slug' => $company->slug])}}" class="btn btn-large btn-success blue _margin-50"><b>Add Your Review</b></a>
                                 
             </div>
         </section>
@@ -59,7 +59,7 @@
 		<div class="container _center">
 			<h1>Have You Patronized {{$company->name}} ?</h1>
 			<p>Leave your Review. It would only take 1 minute</p>
-			<a href="/{{$company->company_slug}}/add" class="btn blue _margin-20">Add Your Review</a>
+			<a href="{{route('add-company-review', ['slug' => $company->slug])}}" class="btn blue _margin-20">Add Your Review</a>
             
 		</div>
 	</section>

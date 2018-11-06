@@ -18,7 +18,7 @@ class Review extends Model
     /**
      * Get the company that owns the review.
      */
-    public function user()
+    public function company()
     {
         return $this->belongsTo('App\Company');
     }
