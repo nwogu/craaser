@@ -70,8 +70,7 @@ class HomeController extends Controller
                     array_push($great_ratings, $reviews);
                 }
             }
-            //dump low ratings
-            dump($low_ratings);
+            
             //find the average rating
             $average_reviews = round($sum_of_reviews / $total_reviews, 1);
         }

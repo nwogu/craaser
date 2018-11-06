@@ -56,7 +56,60 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li >
+                        <!-- Add More Side Bar Menus to Mobile-->
+                        @if (Route::currentRouteName() == 'dashboard')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                            <i class="fas fa-tachometer-alt"></i>Overview</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'contacts')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-address-book"></i>Contacts</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'tasks')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Tasks</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'templates')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-clipboard"></i>Templates</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'campaigns')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-bullhorn"></i>Campaigns</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'reviews')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="far fa-comment-alt"></i>Reviews</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'logout')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -83,7 +136,60 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <!-- Add More Side Bar Menus to Desktop-->
+                        @if (Route::currentRouteName() == 'dashboard')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                            <i class="fas fa-tachometer-alt"></i>Overview</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'contacts')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="{{ route('contacts') }}">
+                                <i class="fas fa-address-book"></i>Contacts</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'tasks')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Tasks</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'templates')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-clipboard"></i>Templates</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'campaigns')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="fas fa-bullhorn"></i>Campaigns</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'reviews')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
+                            <a href="#">
+                                <i class="far fa-comment-alt"></i>Reviews</a>
+                        </li>
+                        @if (Route::currentRouteName() == 'logout')
+                        <li class="active">
+                        @else
+                        <li>
+                        @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

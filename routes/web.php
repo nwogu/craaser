@@ -25,3 +25,4 @@ Route::group(['prefix' => 'app'], function () {
 });
 
 Route::get('/app/dashboard', 'HomeController@index')->name('dashboard');
+Route::any('/app/contact', 'ContactController@index')->name('contacts');
