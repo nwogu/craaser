@@ -134,11 +134,11 @@
                                                 <td>No</td>
                                                 @endif
                                                 @if ($review->published == 1)
-                                                <td class="text-right"><a href='/home/publish/{{$review->id}}'>unpublish</a></td>
+                                                <td class="text-right"><a href="{{ route('publish-review', ['id' => $review->id]) }}">unpublish</a></td>
                                                 @else
-                                                <td class="text-right"><a href='/home/publish/{{$review->id}}'>publish</a></td>
+                                                <td class="text-right"><a href="{{ route('publish-review', ['id' => $review->id]) }}">publish</a></td>
                                                 @endif
-                                                <td class="text-right"><a href='/home/confirmdelete/{{$review->id}}'>delete</a></td>
+                                                <td class="text-right"><a href="{{ route('confirm-delete-review', ['id' => $review->id]) }}">delete</a></td>
                                                
                                             </tr>
                                         @endforeach

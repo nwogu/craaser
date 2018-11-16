@@ -70,7 +70,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('contacts') }}">
                                 <i class="fas fa-address-book"></i>Contacts</a>
                         </li>
                         @if (Route::currentRouteName() == 'tasks')
@@ -142,7 +142,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('dashboard') }}">
                             <i class="fas fa-tachometer-alt"></i>Overview</a>
                         </li>
                         @if (Route::currentRouteName() == 'contacts')
@@ -182,7 +182,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('reviews') }}">
                                 <i class="far fa-comment-alt"></i>Reviews</a>
                         </li>
                         @if (Route::currentRouteName() == 'logout')

@@ -17,12 +17,13 @@ Route::get('/', function () {
 
 Route::get('/{slug}', 'ReviewController@show')->name('company-review-page');
 Route::any('/{slug}/add', 'ReviewController@create')->name('add-company-review');
-Route::any('/home/delete/{id}', 'HomeController@delete')->name('delete-review');
-Route::any('/home/confirmdelete/{id}', 'HomeController@confirmDelete')->name('confirm-delete-review');
-Route::any('/home/publish/{id}', 'HomeController@publish')->name('publish-review');
+Route::any('/app/review/delete/{id}', 'ReviewController@delete')->name('delete-review');
+Route::any('/app/review/confirmdelete/{id}', 'ReviewController@confirmDelete')->name('confirm-delete-review');
+Route::any('/app/review/publish/{id}', 'ReviewController@publish')->name('publish-review');
 Route::group(['prefix' => 'app'], function () {
     Auth::routes();
 });
 
 Route::get('/app/dashboard', 'HomeController@index')->name('dashboard');
 Route::any('/app/contact', 'ContactController@index')->name('contacts');
+Route::any('/app/review', 'ReviewController@index')->name('reviews');
