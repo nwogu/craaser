@@ -41,7 +41,7 @@ class ReviewController extends Controller
         //check if there are no reviews
         if ($company->reviews()->count() < 1) {
             //return view
-            return view('dashboard', [
+            return view('dashboard.review.index', [
                 'total' => $total_reviews, 
                 'average' => $average_reviews, 
                 'bad' => $bad_reviews, 

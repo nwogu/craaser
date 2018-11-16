@@ -27,3 +27,5 @@ Route::group(['prefix' => 'app'], function () {
 Route::get('/app/dashboard', 'HomeController@index')->name('dashboard');
 Route::any('/app/contact', 'ContactController@index')->name('contacts');
 Route::any('/app/review', 'ReviewController@index')->name('reviews');
+Route::any('/app/contact/add-contact', 'ContactController@store')->name('add-contact');
+Route::any('/app/contact/change-status/{contact}', 'ContactController@changeStatus')->name('change-status');

@@ -7,109 +7,137 @@
             <div class="row">
                 <div class="col-md-12 mb-2">
                     <div class="overview-wrap">
-                        <button class="au-btn au-btn-icon au-btn--blue">
+                        <button class="au-btn au-btn-icon au-btn--blue btn-secondary" data-toggle="modal" data-target="#addContact">
                             <i class="zmdi zmdi-plus"></i>add contact</button>
                     </div>
                 </div>
             </div>
             <div class="row">
+            @if (!$company->contacts->isEmpty())
+            @foreach ($company->contacts as $contact)
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title mb-3">Chioma Chuckula
+                            <strong class="card-title mb-3">{{$contact->firstname}} {{$contact->lastname}}
                             </strong>
                             <small>
-                                    <span class="badge badge-primary float-right mt-1">Prospect</span>
+                                    @if($contact->status->name == 'prospect')
+                                    <span class="badge badge-primary float-right mt-1">{{$contact->status->name}}</span>
+                                    @elseif($contact->status->name == 'lead')
+                                    <span class="badge badge-primary float-right mt-1">{{$contact->status->name}}</span>
+                                    @elseif($contact->status->name == 'client')
+                                    <span class="badge badge-success float-right mt-1">{{$contact->status->name}}</span>
+                                    @else
+                                    <span class="badge badge-danger float-right mt-1">{{$contact->status->name}}</span>
+                                    @endif
                                 </small>
                         </div>
                         <div class="card-body">
                             <div class="mx-auto d-block">
-                                <h5 class="text-sm-center mt-2 mb-1">08137507119</h5>
+                                <h5 class="text-sm-center mt-2 mb-1">{{$contact->phone}}</h5>
                                 <div class="location text-sm-center">
-                                    chiomachukuwka@gmail.com</div>
+                                    {{$contact->email}}</div>
                             </div>
                             <hr>
                             <div class="card-text text-sm-center">
-                                <a href="#" class="btn btn-success btn-sm">
-                                    Send SMS
-                                </a>
-                                <a href="#" class="btn btn-primary btn-sm">
-                                    Send Email
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-pinterest pr-1"></i>
-                                </a>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-success btn-sm">
+                                            Send Message
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="{{ route('change-status', ['contact' => $contact])}}" class="btn btn-primary btn-sm">
+                                        @if ($contact->status->name == 'prospect')
+                                            Mark as Lead
+                                        @elseif ($contact->status->name == 'lead')
+                                            Mark as Client
+                                        @elseif ($contact->status->name == 'client')
+                                            Mark Lukewarm
+                                        @else
+                                            Mark Prospect
+                                        @endif
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
+            @endforeach
+            @else
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title mb-3">Profile Card</strong>
+                            
                         </div>
                         <div class="card-body">
                             <div class="mx-auto d-block">
-                                <img class="rounded-circle mx-auto d-block" src="images/icon/avatar-01.jpg" alt="Card image cap">
-                                <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                <h5 class="text-sm-center mt-2 mb-1"></h5>
                                 <div class="location text-sm-center">
-                                    <i class="fa fa-map-marker"></i> California, United States</div>
+                                    No Contacts Saved</div>
                             </div>
                             <hr>
                             <div class="card-text text-sm-center">
-                                <a href="#">
-                                    <i class="fa fa-facebook pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-pinterest pr-1"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title mb-3">Profile Card</strong>
-                        </div>
-                        <div class="card-body">
-                            <div class="mx-auto d-block">
-                                <img class="rounded-circle mx-auto d-block" src="images/icon/avatar-01.jpg" alt="Card image cap">
-                                <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
-                                <div class="location text-sm-center">
-                                    <i class="fa fa-map-marker"></i> California, United States</div>
-                            </div>
-                            <hr>
-                            <div class="card-text text-sm-center">
-                                <a href="#">
-                                    <i class="fa fa-facebook pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-twitter pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin pr-1"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-pinterest pr-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @endif
             </div>
         </div>
     </div>
+
+    <!-- modal scroll -->
+			<div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContactmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="scrollmodalLabel">Add Contact</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="{{ route('add-contact') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="first_name" class="control-label mb-1">First Name</label>
+                                    <input id="first_name" name="firstName" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="control-label mb-1">Last Name</label>
+                                    <input id="last_name" name="lastName" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="control-label mb-1">Email</label>
+                                    <input id="email" name="email" type="email" class="form-control" aria-required="false" aria-invalid="false">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="control-label mb-1">Phone Number</label>
+                                    <input id="phone" name="phone" type="tel" class="form-control" aria-required="fasle" aria-invalid="false">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="control-label mb-1">Address</label>
+                                    <textarea id="address" name="address" type="text" class="form-control" aria-required="fasle" aria-invalid="false"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status" class="control-label mb-1">Status</label>
+                                    <select name="status" id="select" class="form-control">
+                                        @foreach ($statuses as $status)
+                                        <option value="{{ $status->name }}">{{$status->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="submit" class="btn btn-primary">Add</button>
+						</div>
+                        </form>
+					</div>
+				</div>
+			</div>
+			<!-- end modal scroll -->
 
 @endsection
