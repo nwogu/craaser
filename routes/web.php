@@ -15,17 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+//Company public review page
 Route::get('/{slug}', 'ReviewController@show')->name('company-review-page');
+//Add Review from Customer
 Route::any('/{slug}/add', 'ReviewController@create')->name('add-company-review');
+//Delete Review
 Route::any('/app/review/delete/{id}', 'ReviewController@delete')->name('delete-review');
+//COnfirm delete review
 Route::any('/app/review/confirmdelete/{id}', 'ReviewController@confirmDelete')->name('confirm-delete-review');
+//Publish Review
 Route::any('/app/review/publish/{id}', 'ReviewController@publish')->name('publish-review');
+//Auth
 Route::group(['prefix' => 'app'], function () {
     Auth::routes();
 });
-
+//Dashboard Overview
 Route::get('/app/dashboard', 'HomeController@index')->name('dashboard');
+//List Contacts
 Route::any('/app/contact', 'ContactController@index')->name('contacts');
+//List Reviews o dashboard
 Route::any('/app/review', 'ReviewController@index')->name('reviews');
+//Add Contact
 Route::any('/app/contact/add-contact', 'ContactController@store')->name('add-contact');
+//Change Contact Status
 Route::any('/app/contact/change-status/{contact}', 'ContactController@changeStatus')->name('change-status');
+//List Template
+Route::any('/app/template', 'TemplateController@index')->name('templates');

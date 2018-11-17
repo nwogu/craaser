@@ -262,9 +262,16 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
             @if(session()->has('message'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 {!!session()->get('message')!!}
                 </div>
+            @endif
+            @if($errors->any())
+            @foreach($errors->all() as $message)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {!! $message !!}
+                </div>
+            @endforeach
             @endif
 
             @yield('content')
