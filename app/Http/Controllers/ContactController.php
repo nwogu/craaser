@@ -22,8 +22,35 @@ class ContactController extends Controller
         $company = $user->company;
         //Get Statuses
         $statuses = Status::all();
+        //hold variables
+        $totalClients = 0;
+        $totalProspects = 0;
+        $totalLukewarm = 0;
 
-        return view('dashboard.contact.index', ['company' => $company, 'statuses' => $statuses]);
+        //Check contacts
+        if (!empty($company->contacts)){
+            //Loop through each contacts
+            foreach($company->contacts as $contact){
+                //add total
+                $totalClients = $totalClients + 1;
+                //check status
+                if ($contact->status->name == 'prospect'){
+                    //add total
+                    $totalProspects = $totalProspects + 1;
+                }elseif($contact->status->name == 'lukewarm'){
+                    //add total
+                    $totalLukewarm = $totalLukewarm + 1;
+                }
+            }
+        }
+
+        return view(
+            'dashboard.contact.index', 
+            ['company' => $company, 
+            'statuses' => $statuses, 
+            'totalContact' => $totalClients,
+            'totalProspect' => $totalProspects,
+            'totalLukewarm' => $totalLukewarm ]);
     }
 
     /**

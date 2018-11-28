@@ -5,10 +5,69 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 mb-2">
+                <div class="col-md-12">
                     <div class="overview-wrap">
-                        <button class="au-btn au-btn-icon au-btn--blue btn-secondary" data-toggle="modal" data-target="#addContact">
+                        <h2 class="title-1">Contacts</h2>
+                        <div class="overview-wrap">
+                            <button class="au-btn au-btn-icon au-btn--blue btn-secondary" data-toggle="modal" data-target="#addContact">
                             <i class="zmdi zmdi-plus"></i>add contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-25">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c1">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    
+                                </div>
+                                <div class="text">
+                                    <h2>{{ $totalContact }}</h2>
+                                    <span>Total Contacts</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c2">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    
+                                </div>
+                                <div class="text">
+                                    <h2>{{ $totalProspect }}</h2>
+                                    <span>Total Prospects</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c3">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    
+                                </div>
+                                <div class="text">
+                                    <h2>{{ $totalLukewarm }}</h2>
+                                    <span>Total Lukewarm</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

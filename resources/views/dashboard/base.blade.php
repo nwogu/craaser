@@ -32,6 +32,7 @@
 
     <!-- Main CSS-->
     <link href="{{ URL::asset('css/theme.css') }}" rel="stylesheet" media="all">
+    <script src="{{ URL::asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
 </head>
 
@@ -62,7 +63,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('dashboard') }}">
                             <i class="fas fa-tachometer-alt"></i>Overview</a>
                         </li>
                         @if (Route::currentRouteName() == 'contacts')
@@ -86,7 +87,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('templates') }}">
                                 <i class="fas fa-clipboard"></i>Templates</a>
                         </li>
                         @if (Route::currentRouteName() == 'campaigns')
@@ -102,7 +103,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('reviews') }}">
                                 <i class="far fa-comment-alt"></i>Reviews</a>
                         </li>
                         @if (Route::currentRouteName() == 'logout')
@@ -166,7 +167,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('templates') }}">
                                 <i class="fas fa-clipboard"></i>Templates</a>
                         </li>
                         @if (Route::currentRouteName() == 'campaigns')
@@ -262,13 +263,13 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
             @if(session()->has('message'))
-                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {!!session()->get('message')!!}
                 </div>
             @endif
             @if($errors->any())
             @foreach($errors->all() as $message)
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {!! $message !!}
                 </div>
             @endforeach
@@ -307,6 +308,7 @@
     <!-- Main JS-->
     <script src="{{ URL::asset('js/main.js') }}"></script>
 
+@yield('javascript')
 </body>
 
 </html>

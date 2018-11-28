@@ -41,3 +41,11 @@ Route::any('/app/contact/add-contact', 'ContactController@store')->name('add-con
 Route::any('/app/contact/change-status/{contact}', 'ContactController@changeStatus')->name('change-status');
 //List Template
 Route::any('/app/template', 'TemplateController@index')->name('templates');
+//Add Template
+Route::any('/app/template/add-template', 'TemplateController@store')->name('add-template');
+//Edit Template
+Route::any('/app/template/edit-template/{template}', 'TemplateController@edit')->name('edit-template');
+//Update Template
+Route::any('/app/template/update-template/{template}', 'TemplateController@update')->name('update-template');
+//Delete Template
+Route::any('/app/template/delete-template/{template}', 'TemplateController@destroy')->name('delete-template');
