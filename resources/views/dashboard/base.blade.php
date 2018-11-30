@@ -33,6 +33,9 @@
     <!-- Main CSS-->
     <link href="{{ URL::asset('css/theme.css') }}" rel="stylesheet" media="all">
     <script src="{{ URL::asset('vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+
+    @yield('head')
 
 </head>
 
@@ -83,12 +86,20 @@
                                 <i class="fas fa-calendar-alt"></i>Tasks</a>
                         </li>
                         @if (Route::currentRouteName() == 'templates')
-                        <li class="active">
+                        <li class="active has-sub">
                         @else
-                        <li>
+                        <li class="has-sub">
                         @endif
-                            <a href="{{ route('templates') }}">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-clipboard"></i>Templates</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="{{ route('templates') }}">Templates</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('templates') }}">Group Template</a>
+                                </li>
+                            </ul>
                         </li>
                         @if (Route::currentRouteName() == 'campaigns')
                         <li class="active">
@@ -163,12 +174,20 @@
                                 <i class="fas fa-calendar-alt"></i>Tasks</a>
                         </li>
                         @if (Route::currentRouteName() == 'templates')
-                        <li class="active">
+                        <li class="active has-sub">
                         @else
-                        <li>
+                        <li class="has-sub">
                         @endif
-                            <a href="{{ route('templates') }}">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-clipboard"></i>Templates</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="{{ route('templates') }}">Templates</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('group-templates') }}">Group Template</a>
+                                </li>
+                            </ul>
                         </li>
                         @if (Route::currentRouteName() == 'campaigns')
                         <li class="active">

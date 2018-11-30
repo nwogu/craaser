@@ -62,4 +62,20 @@ class Company extends Model
     {
         return $this->hasMany('App\Campaign')->orderBy('created_at', 'desc');
     }
+
+     /**
+     * Get the group templates of the company.
+     */
+    public function groupTemplates()
+    {
+        return $this->hasMany('App\GroupTemplate')->orderBy('created_at', 'desc');
+    }
+
+     /**
+     * Get the group templates of the company.
+     */
+    public function groupMessageTemplates()
+    {
+        return $this->hasMany('App\GroupMessageTemplate')->orderBy('created_at', 'desc');
+    }
 }

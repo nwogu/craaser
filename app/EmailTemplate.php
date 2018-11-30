@@ -23,4 +23,12 @@ class EmailTemplate extends Model
     {
         return $this->belongsTo('App\Company');
     }
+
+    /**
+     * Get the company that owns the email template.
+     */
+    public function groups()
+    {
+        return $this->belongsToMany('App\GroupTemplate', 'group_message_templates', 'email_templates_id', 'group_templates_id');
+    }
 }
