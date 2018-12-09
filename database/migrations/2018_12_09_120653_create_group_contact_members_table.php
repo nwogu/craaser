@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupMessageTemplatesTable extends Migration
+class CreateGroupContactMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateGroupMessageTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_message_templates', function (Blueprint $table) {
+        Schema::create('group_contact_members', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
-            $table->integer('group_templates_id')->unsigned();
-            $table->integer('email_templates_id')->unsigned();
+            $table->integer('group_contacts_id')->unsigned();
+            $table->integer('contacts_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('group_templates_id')->references('id')->on('group_templates');
-            $table->foreign('email_templates_id')->references('id')->on('email_templates');
+            $table->foreign('group_contacts_id')->references('id')->on('group_contacts')->onDelete('cascade');
+            $table->foreign('contacts_id')->references('id')->on('contacts')->onDelete('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateGroupMessageTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_message_templates');
+        Schema::dropIfExists('group_contact_members');
     }
 }

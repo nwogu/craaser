@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmailTemplatesTable extends Migration
+class CreateGroupMessageTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateEmailTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('email_templates', function (Blueprint $table) {
+        
+        Schema::create('group_message_templates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
-            $table->string('name');
-            $table->text('body');
-            $table->string('subject');
+            $table->integer('group_templates_id')->unsigned();
+            $table->integer('email_templates_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('group_templates_id')->references('id')->on('group_templates')->onDelete('cascade');
+            $table->foreign('email_templates_id')->references('id')->on('email_templates')->onDelete('cascade');
         });
     }
 
@@ -32,6 +34,6 @@ class CreateEmailTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('email_templates');
+        Schema::dropIfExists('group_message_templates');
     }
 }

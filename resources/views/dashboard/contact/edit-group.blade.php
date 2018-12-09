@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">Edit Group Template</h2>
+                        <h2 class="title-1">Edit Group Contact</h2>
                     </div>
                 </div>
             </div>
@@ -19,8 +19,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalTemplate }}</h2>
-                                    <span>Total Templates</span>
+                                    <h2>{{ $totalContact }}</h2>
+                                    <span>Total Contacts</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -37,8 +37,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalSmsTemplate }}</h2>
-                                    <span>Total Sent</span>
+                                    <h2>{{ $totalProspect }}</h2>
+                                    <span>Total Prospects</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -55,8 +55,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalEmailTemplate }}</h2>
-                                    <span>Total Defaults</span>
+                                    <h2>{{ $totalLukewarm }}</h2>
+                                    <span>Total Lukewarm</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -72,29 +72,29 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center title-2">{{$groupTemplate->name}}</h3>
+                                <h3 class="text-center title-2">{{$groupContact->name}}</h3>
                             </div>
                             <hr>
-                            <form action="{{ route('update-group-template', ['template' => $groupTemplate]) }}" method="post" >
+                            <form action="{{ route('update-group-contact', ['contact' => $groupContact]) }}" method="post" >
                                 @csrf
                                 <div class="form-group">
-                                    <label for="templateName" class="control-label mb-1">Template Name</label>
-                                    <input id="templateName" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{$groupTemplate->name}}" required>
+                                    <label for="templateName" class="control-label mb-1">Group Name</label>
+                                    <input id="templateName" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{$groupContact->name}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="templates" class="control-label mb-1">Choose Templates</label>
-                                    <select class="select2 form-control" name="templates[]" multiple="multiple" id="select2" required>
-                                        @foreach ($company->emailTemplates as $emailTemplate)
-                                        @if(in_array($emailTemplate->name, $messages))
-                                        <option value="{{$emailTemplate->id}}" selected>{{$emailTemplate->name}}</option>
+                                    <label for="templates" class="control-label mb-1">Choose Members</label>
+                                    <select class="select2 form-control" name="contacts[]" multiple="multiple" id="select2" required>
+                                        @foreach ($company->contacts as $member)
+                                        @if(in_array($member->firstname, $members))
+                                        <option value="{{$member->id}}" selected>{{$member->firstname}} {{$member->lastname}}</option>
                                         @else
-                                        <option value="{{$emailTemplate->id}}">{{$emailTemplate->name}}</option>
+                                        <option value="{{$member->id}}">{{$member->firstname}} {{$member->lastname}}</option>
                                         @endif
                                         @endforeach
                                     </select>
                                 </div>
                                 <div>
-                                <a href="{{ route('group-templates') }}" class="btn btn-secondary">Cancel</a>
+                                <a href="{{ route('group-contacts') }}" class="btn btn-secondary">Cancel</a>
 							    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>

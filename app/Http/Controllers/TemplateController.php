@@ -218,7 +218,7 @@ class TemplateController extends Controller
     {
         $template->delete();
          //add flash message on error
-         $request->session()->flash('message', 'This template, '.$template->name.' is deleted');
+         $request->session()->flash('message', 'Template deleted');
          //Return redirect
          return redirect()->route('templates');
     }
@@ -343,7 +343,7 @@ class TemplateController extends Controller
 
         foreach($groupTemplate->messages as $message){
             //add to messages pack
-            array_push($messages, $message);
+            array_push($messages, $message->name);
         }
 
         //Render View
@@ -360,5 +360,91 @@ class TemplateController extends Controller
                 'groupTemplate' => $groupTemplate,
                 'messages' => $messages
             ]);
+    }
+
+    public function updateGroupTemplate(Request $request, GroupTemplate $groupTemplate){
+        //Get Company
+        $company = Auth::user()->company;
+        //Validate Submission
+        $validator = Validator::make($request->all(), [
+            'name'   => 'required',
+            'templates' => 'required'
+        ]);
+        //Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
+
+        $groupTemplate->name = $request->name;
+        //save group template
+        if ($groupTemplate->save()){
+            //Get Group Message Templates
+            $groupMessageTemplates = GroupMessageTemplate::where('company_id', $company->id)
+                                        ->where('group_templates_id', $groupTemplate->id)
+                                        ->get();
+            //Check Group Message Templates
+            if (!empty($groupMessageTemplates)){
+                //Loop through each group message templates
+                foreach($groupMessageTemplates as $messageTemplate){
+                //Delete Group Message Templates
+                $messageTemplate->delete();
+                }
+            }
+            //create group message templates
+            //Loop through each templates
+            foreach($request->templates as $template){
+                //Create new template
+                $groupMessageTemplate = new GroupMessageTemplate();
+                $groupMessageTemplate->company_id = $company->id;
+                $groupMessageTemplate->group_templates_id = $groupTemplate->id;
+                $groupMessageTemplate->email_templates_id = $template;
+                if (!$groupMessageTemplate->save()){
+                    //add flash message on error
+                    $request->session()->flash('message', 'An error occured while updating the group template. please try again');
+                    //Return redirect
+                    return redirect()->back();
+                }
+            }
+        }
+
+        //add flash message on success
+        $request->session()->flash('message', 'Group Template updated successfully');
+        //Return redirect
+        return redirect()->route('group-templates');
+    }
+
+    public function deleteGroupTemplate(GroupTemplate $groupTemplate, Request $request){
+        //Delete Grou[p Template
+        $groupTemplate->delete();
+         //add flash message on error
+         $request->session()->flash('message', 'Group Template deleted');
+         //Return redirect
+         return redirect()->route('group-templates');
+    }
+
+    public function confirmDeleteGroupTemplate(GroupTemplate $groupTemplate, Request $request){
+        //Construct message
+        $message = "Are you sure you want to delete? ";
+        //Add To Message
+        $message .= "<a href='".route('delete-group-template', ['groupTemplate' => $groupTemplate])."'>Yes</a> ";
+        //Add To Message
+        $message .= "<a href='".route('group-templates')."'>No</a>";
+        //add flash message on error
+        $request->session()->flash('message', $message);
+        //Return redirect
+        return redirect()->back();
+    }
+
+    public function confirmDeleteTemplate(EmailTemplate $template, Request $request){
+        //Construct message
+        $message = "Are you sure you want to delete? ";
+        //Add To Message
+        $message .= "<a href='".route('delete-template', ['template' => $template])."'>Yes</a> ";
+        //Add To Message
+        $message .= "<a href='".route('templates')."'>No</a>";
+        //add flash message on error
+        $request->session()->flash('message', $message);
+        //Return redirect
+        return redirect()->back();
     }
 }

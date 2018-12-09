@@ -31,4 +31,12 @@ class Contact extends Model
     {
         return $this->belongsTo('App\Status');
     }
+
+    /**
+     * Get the group.
+     */
+    public function groups()
+    {
+        return $this->belongsToMany('App\GroupContact', 'group_contact_members', 'contacts_id', 'group_contacts_id');
+    }
 }

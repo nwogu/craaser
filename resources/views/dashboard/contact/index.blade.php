@@ -1,5 +1,15 @@
 @extends('dashboard.base')
 
+@section('head')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<style type="text/css">
+    .select2-container {
+        width: 100% !important;
+    }
+</style>
+@endsection
+
 @section('content')
 
     <div class="section__content section__content--p30">
@@ -182,7 +192,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="status" class="control-label mb-1">Status</label>
-                                    <select name="status" id="select" class="form-control">
+                                    <select name="status" id="select" class="form-control select2">
                                         @foreach ($statuses as $status)
                                         <option value="{{ $status->name }}">{{$status->name}}</option>
                                         @endforeach
@@ -198,5 +208,17 @@
 				</div>
 			</div>
 			<!-- end modal scroll -->
+
+@endsection
+
+@section('javascript')
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
+
 
 @endsection

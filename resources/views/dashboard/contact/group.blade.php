@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">Group Templates</h2>
+                        <h2 class="title-1">Group Contacts</h2>
                         <div class="overview-wrap">
                             <button class="au-btn au-btn-icon au-btn--blue btn-secondary" data-toggle="modal" data-target="#addTemplate">
                             <i class="zmdi zmdi-plus"></i>create group</button>
@@ -34,8 +34,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalTemplate }}</h2>
-                                    <span>Total Templates</span>
+                                    <h2>{{ $totalContact }}</h2>
+                                    <span>Total Contacts</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -52,8 +52,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalSmsTemplate }}</h2>
-                                    <span>Total Sent</span>
+                                    <h2>{{ $totalProspect }}</h2>
+                                    <span>Total Prospects</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -70,8 +70,8 @@
                                     
                                 </div>
                                 <div class="text">
-                                    <h2>{{ $totalEmailTemplate }}</h2>
-                                    <span>Total Defaults</span>
+                                    <h2>{{ $totalLukewarm }}</h2>
+                                    <span>Total Lukewarm</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -82,25 +82,25 @@
                 </div>
             </div>
             <div class="row">
-            @if (!$groupTemplates->isEmpty())
-            @foreach ($groupTemplates as $template)
+            @if (!$company->groupContacts->isEmpty())
+            @foreach ($company->groupContacts as $groupContact)
             <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="float-left">
-                            {{$template->name}}
+                            {{$groupContact->name}}
                             </div>
                             <div class="float-right">
-                                <a href="{{ route('edit-group-template', ['groupTemplate' => $template->id])}}" class="btn btn-primary btn-sm">edit</a>
-                                <a href="{{ route('confirm-delete-group-template', ['groupTemplate' => $template->id])}}" class="btn btn-danger btn-sm">delete</a>
+                                <a href="{{ route('edit-group-contact', ['groupContact' => $groupContact->id])}}" class="btn btn-primary btn-sm">edit</a>
+                                <a href="{{ route('confirm-delete-group-contact', ['groupContact' => $groupContact->id])}}" class="btn btn-danger btn-sm">delete</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="mx-auto d-block">
                                 <h5 class="text-sm mt-2 mb-1"></h5>
                                 <div class="location float-left">
-                                @foreach($template->messages as $message)
-                                <p>{{ $message->name }}</p>
+                                @foreach($groupContact->contacts as $member)
+                                <p>{{ $member->firstname }} {{ $member->lastname }}</p>
                                 @endforeach
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                             <div class="mx-auto d-block">
                                 <h5 class="text-sm-center mt-2 mb-1"></h5>
                                 <div class="location text-sm-center">
-                                    No Group Templates</div>
+                                    No Group Contacts</div>
                             </div>
                             <hr>
                             <div class="card-text text-sm-center">
@@ -136,23 +136,23 @@
 				<div class="modal-dialog modal-md" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="scrollmodalLabel">Create Group Template</h5>
+							<h5 class="modal-title" id="scrollmodalLabel">Create Group Contact</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
-							<form action="{{ route('create-group-template') }}" method="POST">
+							<form action="{{ route('create-group-contact') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="templateName" class="control-label mb-1">Template Name</label>
+                                    <label for="templateName" class="control-label mb-1">Group Name</label>
                                     <input id="templateName" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                 </div>
                                 <div class="form-group">
-                                <label for="templates" class="control-label mb-1">Choose Templates</label>
-                                <select class="select2 form-control" name="templates[]" multiple="multiple" required>
-                                    @foreach ( $company->emailTemplates as $emailTemplate)
-                                    <option value="{{$emailTemplate->id}}">{{$emailTemplate->name}}</option>
+                                <label for="templates" class="control-label mb-1">Choose Members</label>
+                                <select class="select2 form-control" name="contacts[]" multiple="multiple" required>
+                                    @foreach ( $company->contacts as $contact)
+                                    <option value="{{$contact->id}}">{{$contact->firstname}} {{$contact->lastname}}</option>
                                     @endforeach
                                 </select>
                                 </div>

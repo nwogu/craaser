@@ -70,12 +70,20 @@
                             <i class="fas fa-tachometer-alt"></i>Overview</a>
                         </li>
                         @if (Route::currentRouteName() == 'contacts')
-                        <li class="active">
+                        <li class="active has-sub">
                         @else
-                        <li>
+                        <li class="has-sub">
                         @endif
-                            <a href="{{ route('contacts') }}">
+                        <a class="js-arrow" href="#">
                                 <i class="fas fa-address-book"></i>Contacts</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="{{ route('contacts') }}">Contacts</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('group-contacts') }}">Group Contacts</a>
+                                </li>
+                            </ul>
                         </li>
                         @if (Route::currentRouteName() == 'tasks')
                         <li class="active">
@@ -158,12 +166,20 @@
                             <i class="fas fa-tachometer-alt"></i>Overview</a>
                         </li>
                         @if (Route::currentRouteName() == 'contacts')
-                        <li class="active">
+                        <li class="active has-sub">
                         @else
-                        <li>
+                        <li class="has-sub">
                         @endif
-                            <a href="{{ route('contacts') }}">
+                        <a class="js-arrow" href="#">
                                 <i class="fas fa-address-book"></i>Contacts</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="{{ route('contacts') }}">Contacts</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('group-contacts') }}">Group Contacts</a>
+                                </li>
+                            </ul>
                         </li>
                         @if (Route::currentRouteName() == 'tasks')
                         <li class="active">
@@ -194,7 +210,7 @@
                         @else
                         <li>
                         @endif
-                            <a href="#">
+                            <a href="{{ route('campaigns') }}">
                                 <i class="fas fa-bullhorn"></i>Campaigns</a>
                         </li>
                         @if (Route::currentRouteName() == 'reviews')

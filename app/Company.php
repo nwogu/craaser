@@ -78,4 +78,20 @@ class Company extends Model
     {
         return $this->hasMany('App\GroupMessageTemplate')->orderBy('created_at', 'desc');
     }
+
+    /**
+     * Get the group contacts of the company.
+     */
+    public function groupContacts()
+    {
+        return $this->hasMany('App\GroupContact')->orderBy('created_at', 'desc');
+    }
+
+     /**
+     * Get the group templates of the company.
+     */
+    public function groupContactMembers()
+    {
+        return $this->hasMany('App\GroupContactMember')->orderBy('created_at', 'desc');
+    }
 }

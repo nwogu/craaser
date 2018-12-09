@@ -82,7 +82,7 @@
                             </div>
                             <div class="float-right">
                                 <a href="{{ route('edit-template', ['template' => $template->id])}}" class="btn btn-primary btn-sm">edit</a>
-                                <button id='delete-button' url="{{ route('delete-template', ['template' => $template->id]) }}" class="btn btn-danger btn-sm delete-button">delete</button>
+                                <a href="{{ route('confirm-delete-template', ['template' => $template->id])}}" class="btn btn-danger btn-sm">delete</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -184,10 +184,11 @@
 
 var deleteButton = $('.delete-button');
 deleteButton.on('click', function(e) {
-    var url = $('#delete-button').attr('url');
+    var url = $('.delete-button').attr('url');
     e.preventDefault();
         if (confirm('Are you sure you want to delete this template?')) {
             window.location.href = url;
+            
         }
     });
 </script>
