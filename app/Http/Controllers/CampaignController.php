@@ -66,7 +66,39 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        //
+        //get user
+        $user = Auth::user();
+        //Get Company
+        $company = $user->company;
+        //Get all campaigns
+        $campaigns = $company->campaigns;
+        //hold total count
+        $totalCampaign = 0;
+        //Hold active count
+        $activeCampaign = 0;
+        //Hold paused count
+        $pausedCampaign = 0;
+
+        foreach($campaigns as $campaign){
+            //count total
+            $totalCampaign++;
+            //Check campaign
+            if ((!$campaign->is_active) && ($campaign->is_active !== null)){
+                //count paused
+                $pausedCampaign++;
+            }else{
+                //count active
+                $activeCampaign++;
+            }
+        }
+        //return view
+        return view('dashboard.campaign.create', array(
+            'activeCampaign' => $activeCampaign,
+            'totalCampaign' => $totalCampaign,
+            'pausedCampaign' => $pausedCampaign,
+            'company' => $company,
+            'campaigns' => $campaigns
+        ));
     }
 
     /**

@@ -16,6 +16,15 @@ class Campaign extends Model
         'name', 'interval_day', 'is_active'
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'next_send_date'
+    ];
+
      /**
      * Get the company of the campaign.
      */
@@ -46,5 +55,21 @@ class Campaign extends Model
     public function emailTemplate()
     {
         return $this->belongsTo('App\EmailTemplate');
+    }
+
+    /**
+     * Get the group template of the campaign.
+     */
+    public function group()
+    {
+        return $this->belongsTo('App\GroupTemplate', 'group_template_id');
+    }
+
+     /**
+     * Get the contact of the campaign.
+     */
+    public function contact()
+    {
+        return $this->belongsTo('App\Contact', 'group_contact_id');
     }
 }

@@ -94,3 +94,5 @@ Route::any('/app/template/confirm-delete-template/{template}', 'TemplateControll
 
 //List Campaigns
 Route::any('/app/campaign', 'CampaignController@index')->name('campaigns');
+//Crete Campaign
+Route::any('/app/campaign/create-campaign', 'CampaignController@create')->name('create-campaign');

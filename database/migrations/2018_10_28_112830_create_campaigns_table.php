@@ -13,20 +13,22 @@ class CreateCampaignsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->string('name');
             $table->integer('status_id')->unsigned();
-            $table->integer('smsTemplate_id')->unsigned();
-            $table->integer('emailTemplate_id')->unsigned();
-            $table->integer('contact_id')->unsigned();
-            $table->integer('group_contact_id')->unsigned();
-            $table->integer('group_template_id')->unsigned();
+            $table->integer('smsTemplate_id')->unsigned()->nullable();
+            $table->integer('emailTemplate_id')->unsigned()->nullable();
+            $table->integer('contact_id')->unsigned()->nullable();
+            $table->integer('group_contact_id')->unsigned()->nullable();
+            $table->integer('group_template_id')->unsigned()->nullable();
             $table->integer('interval_day')->nullable();
             $table->boolean('is_active')->nullable();
             $table->boolean('is_recurring')->nullable();
             $table->string('send_type')->nullable();
+            $table->string('target_type')->nullable();
             $table->dateTime('next_send_date')->nullable();
             $table->timestamps();
 
