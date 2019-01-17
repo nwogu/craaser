@@ -82,57 +82,48 @@
             <!-- DATA TABLE -->
             <form action="#" method="post" class="form-horizontal">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <strong>Campaign Details</strong>
                             </div>
                             <div class="card-body card-block">
-                                <div class="form-group">
-                                    <label for="inputIsValid" class=" form-control-label">Campaign Name</label>
-                                    <input type="text" id="campaignName" name="name" class=" form-control-success form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputIsInvalid" class=" form-control-label">Frequency</label>
-                                    <select type="text" id="frequency" name="frequency" class="form-control select2" required>
-                                    <option value="placeholder"> Select Frequency </option>
-                                    <option value="once"> Once </option>
-                                    <option value="recurring"> Recurring</option> </select>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputIsValid" class=" form-control-label">Campaign Name</label>
+                                            <input type="text" id="campaignName" name="name" class=" form-control-success form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputIsInvalid" class=" form-control-label">Frequency</label>
+                                            <select type="text" id="frequency" name="frequency" class="form-control select2" required>
+                                            <option value="placeholder"> Select Frequency </option>
+                                            <option value="once"> Once </option>
+                                            <option value="recurring"> Recurring</option> </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class=" form-group">
+                                            <label for="taget" class=" form-control-label">Target Options</label>
+                                            <select type="text" id="target" name="target_type" class="form-control select2" required>
+                                            <option value="placeholder"> Target By</option>
+                                            <option value="status"> Status</option>
+                                            <option value="group"> Group</option>
+                                            <option value="contact"> Contact</option> </select>
+                                        </div>
+                                        <div class=" form-group">
+                                            <label for="message" class=" form-control-label">Message Options</label>
+                                            <select type="text" id="target" name="message_type" class="form-control select2" required>
+                                            <option value="placeholder"> Message With</option>
+                                            <option value="group_template"> Group Template</option>
+                                            <option value="single_template"> Single Template</option>
+                                            <option value="compose_new"> Compose New</option> </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Target Details</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class=" form-group">
-                                    <label for="taget" class=" form-control-label">Target By</label>
-                                    <select type="text" id="target" name="target_type" class="form-control select2" required>
-                                    <option value="placeholder"> Target By</option>
-                                    <option value="status"> Status</option>
-                                    <option value="group"> Group</option>
-                                    <option value="contact"> Contact</option> </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Message Details</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class="has-success form-group">
-                                    <label for="inputIsValid" class=" form-control-label">Message</label>
-                                    <input type="text" id="inputIsValid" class="is-valid form-control-success form-control">
-                                </div>
-                                <div class="has-warning form-group">
-                                    <label for="inputIsInvalid" class=" form-control-label">Channel</label>
-                                    <input type="text" id="inputIsInvalid" class="is-invalid form-control">
-                                </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary">Next</button>
                             </div>
                         </div>
                     </div>

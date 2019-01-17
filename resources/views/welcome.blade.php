@@ -89,7 +89,7 @@
                 <div class="links">
                     <a href="https://laravel.com/docs">Try Demo</a>
                     <a href="https://laracasts.com">Get Your Sub Domain</a>
-                    <a href="https://laravel-news.com">Contact Us Now</a>
+                    <a href="https://laravel-news.com">Contact Us</a>
                 </div>
             </div>
         </div>

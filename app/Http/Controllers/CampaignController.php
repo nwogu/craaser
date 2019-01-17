@@ -92,7 +92,7 @@ class CampaignController extends Controller
             }
         }
         //return view
-        return view('dashboard.campaign.create', array(
+        return view('dashboard.campaign.create-step-one', array(
             'activeCampaign' => $activeCampaign,
             'totalCampaign' => $totalCampaign,
             'pausedCampaign' => $pausedCampaign,
